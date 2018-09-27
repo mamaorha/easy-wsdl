@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ChangeStudentDetailsImplService"
+	targetNamespace="http://student.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://student.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://student.com/" schemaLocation="ChangeStudent_schema1.xsd" />
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="changeName">
+		<wsdl:part name="parameters" element="tns:changeName">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="changeNameResponse">
+		<wsdl:part name="parameters" element="tns:changeNameResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ChangeStudentDetails">
+		<wsdl:operation name="changeName">
+			<wsdl:input name="changeName" message="tns:changeName">
+			</wsdl:input>
+			<wsdl:output name="changeNameResponse" message="tns:changeNameResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ChangeStudentDetailsImplServiceSoapBinding"
+		type="tns:ChangeStudentDetails">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="changeName">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="changeName">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="changeNameResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ChangeStudentDetailsImplService">
+		<wsdl:port name="ChangeStudentDetailsImplPort" binding="tns:ChangeStudentDetailsImplServiceSoapBinding">
+			<soap:address location="http://localhost:9090/ChangeStudentDetailsImplPort" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
